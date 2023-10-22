@@ -34,7 +34,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="read.txt">
+    <Text Include="sampleprogram.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>

@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
     std::string contents;
     {
         std::stringstream contents_stream;
-        std::fstream input("read.txt", std::ios::in);
+        std::fstream input("sampleprogram.txt", std::ios::in);
         contents_stream << input.rdbuf();
         contents = contents_stream.str();
         

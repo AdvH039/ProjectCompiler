@@ -28,7 +28,7 @@
     <ClInclude Include="error.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="read.txt" />
+    <Text Include="sampleprogram.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
