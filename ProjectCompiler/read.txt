@@ -1,0 +1,202 @@
+
+
+
+Elephant happy Swim3 Banana .
+
+Dog bad Run1 Banana .
+
+Apple good Fly4 Banana ?
+
+Banana   Elephant .
+
+Elephant good Swim3 Dog .
+
+Banana good Jump2 Car !
+
+Car good Fly4 Dog .
+
+Apple sad Jump2 Car .
+
+Elephant sad Jump2 Banana .
+
+Dog sad Swim3 Elephant ?
+
+Banana good Eat5 Dog .
+
+Apple bad Jump2 Elephant ?
+
+Elephant sad Run1 Car !
+
+Car good Swim3 Dog .
+
+Banana bad Swim3 Elephant ?
+
+Dog sad Jump2 Banana !
+
+Banana bad Swim3 Car !
+
+Apple good Jump2 Elephant .
+
+Banana bad Eat5 Apple ?
+
+Elephant sad Run1 Banana ?
+
+Banana sad Swim3 Dog ?
+
+Elephant bad Jump2 Apple ?
+
+Dog happy Fly4 Banana .
+
+Banana happy Eat5 Dog ?
+
+Elephant sad Fly4 Banana .
+
+Banana bad Swim3 Elephant ?
+
+Elephant sad Eat5 Banana .
+
+Banana good Jump2 Apple .
+
+Banana happy Run1 Dog .
+
+Elephant bad Run1 Banana .
+
+Banana sad Run1 Dog ?
+
+Elephant good Jump2 Car .
+
+Banana happy Swim3 Dog .
+
+Elephant bad Swim3 Banana ?
+
+Dog bad Swim3 Elephant .
+
+Apple good Swim3 Elephant .
+
+Banana bad Fly4 Elephant !
+
+Dog sad Jump2 Banana .
+
+Banana good Fly4 Elephant .
+
+Elephant good Swim3 Car .
+
+Banana sad Fly4 Apple ?
+
+Elephant bad Jump2 Car ?
+
+Banana happy Swim3 Dog ?
+
+Dog good Swim3 Elephant !
+
+Banana bad Swim3 Car .
+
+Elephant bad Run1 Dog ?
+
+Banana sad Run1 Apple ?
+
+Elephant sad Fly4 Car !
+
+Dog bad Swim3 Banana .
+
+Banana bad Fly4 Dog ?
+
+Elephant sad Swim3 Banana .
+
+Dog good Swim3 Banana .
+
+Banana happy Run1 Elephant .
+
+Elephant happy Run1 Dog .
+
+Banana bad Swim3 Car .
+
+Elephant happy Jump2 Banana .
+
+Banana good Jump2 Elephant !
+
+Elephant happy Jump2 Dog ?
+
+Banana good Swim3 Elephant ?
+
+Apple bad Fly4 Banana .
+
+Banana good Swim3 Car .
+
+Elephant happy Jump2 Apple !
+
+Dog sad Fly4 Banana .
+
+Banana sad Jump2 Elephant ?
+
+Elephant happy Fly4 Dog !
+
+Banana good Swim3 Dog .
+
+Elephant sad Swim3 Apple !
+
+Banana good Jump2 Dog .
+
+Elephant good Run1 Dog .
+
+Banana bad Jump2 Car .
+
+Elephant sad Fly4 Banana .
+
+Dog good Run1 Banana .
+
+Banana bad Run1 Car !
+
+Elephant happy Fly4 Car ?
+
+Banana happy Swim3 Apple .
+
+Elephant good Swim3 Banana .
+
+Banana bad Swim3 Dog !
+
+Elephant good Fly4 Dog .
+
+Banana happy Swim3 Banana ?
+
+Dog good Jump2 Banana ?
+
+Banana happy Jump2 Elephant .
+
+Elephant good Run1 Banana .
+
+Banana good Jump2 Dog ?
+
+Dog sad Swim3 Car .
+
+Banana happy Swim3 Banana !
+
+Elephant happy Swim3 Banana .
+
+Banana sad Swim3 Banana ?
+
+Elephant happy Swim3 Elephant .
+
+Banana happy Swim3 Banana ?
+
+Elephant good Jump2 Dog .
+
+Banana sad Run1 Dog .
+
+Elephant sad Swim3 Elephant ?
+
+Banana good Run1 Dog .
+
+Elephant sad Swim3 Banana .
+
+Banana bad Swim3 Elephant ?
+
+Elephant bad Swim3 Dog ?
+
+Banana good Swim3 Banana !
+
+Elephant sad Swim3 Banana ?
+
+Banana happy Jump2 Dog .
+
+Elephant bad Run1 Dog ?
