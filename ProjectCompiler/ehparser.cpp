@@ -18,7 +18,7 @@ inline int ERR_203_CALLED = 0;
 
 bool Adjective1_node(std::optional<Token> tkn)
 {
-	std::cout << str;
+	
 	std::string adjective1_value;
 	ERR_OCC = 0;
 	ERR_203_CALLED = 0;
@@ -435,7 +435,7 @@ bool Punctuation_node(std::optional<Token> tkn)
 {
 	
 	// Punctuation phrase ---> Punctuation (mandatory)
-	std::cout << str;
+	
 	if (tkn.has_value())
 	{
 		if ((*tkn).type == TOKEN_TYPE::Eof)
