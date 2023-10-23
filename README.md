@@ -1,12 +1,13 @@
 # ProjectCompiler
 
-## A Frontend of a Compiler using a hand-built Parser, Lexer and a Error Detection and Recovery System for a Context-Free Grammar (CFG)
+## A Frontend of a Compiler hand-built consisting of Parser, Lexer, Error Detection and Recovery System for a Context-Free Grammar (CFG)
 
 This project is built for a language similar to that of English.
 
-- The grammatical specifications are mentioned here, I did not include prepositions or numbers:
-https://docs.google.com/document/d/1uBBrA52rutLfrqMGSvT5C-W2yC91tFdh_a6E8lbkkss/edit#heading=h.yxfcs8ml1jc8
-- All the lexer functions are in the header file lexer.h
+The grammatical specifications are mentioned in the link below (Note: This implementation a part of language does not include prepositions or numbers.):
+https://docs.google.com/document/d/1uBBrA52rutLfrqMGSvT5C-W2yC91tFdh_a6E8lbkkss/edit#heading=h.yxfcs8ml1jc
+Additionally :-
+- All the lexer functions are in the header file lexer.h.
 - All the parser functions are declared in parser.h and defined in parser.cpp
 - All the error log information are in the header file error.h
 - The parser obtains tokens one at a time from the lexer through an object of the Tokenizer class and carries out the productions of the grammar through controlled function calls.
