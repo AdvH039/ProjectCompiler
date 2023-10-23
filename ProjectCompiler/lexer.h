@@ -8,13 +8,17 @@
 
 //variables
 constexpr auto EMPTY = "";
+// regular expression for token identification
 const std::regex IS_NOUN("^[A-Z][a-zA-Z]*$");
 const std::regex IS_VERB("\\b\\w*\\d\\w*\\b");
 const std::regex IS_ADWORD("^[a-z]+$");
 const std::regex IS_PUNC("^[.?!]$");
+
+/* global variables for coordinates of current character
+ * useful for error logging
+*/
 inline int line_count=1;
 inline int word_count=0;
-
 
 
 enum TOKEN_TYPE
@@ -38,6 +42,8 @@ enum TOKEN_SUB_TYPE
 
 
 };
+/* takes enum token type as argument and 
+    returns corresponding string. */
 inline std::string Token_type(enum TOKEN_TYPE tt)
 {
     if (tt == TOKEN_TYPE::Noun)
@@ -64,6 +70,8 @@ inline std::string Token_type(enum TOKEN_TYPE tt)
 
 
 }
+/* takes enum token sub type as argument and
+    returns corresponding string. */
 inline std::string Token_sub_type(enum TOKEN_SUB_TYPE tst)
 {
     if (tst == TOKEN_SUB_TYPE::Subject)
@@ -124,8 +132,10 @@ public:
         
         
         
-        // when offset is zero ---> look at current character
-        //when offset is non zero say x ---> look x steps ahead of the character
+        /*when offset is zero--->look at current character.
+        when offset is non zero say x ---> look x steps ahead of the current character.
+         when offset is -x ---> look -1 steps behind the current character.
+         */
         std::optional<char> peek(int offset = 0)
         {
             if (m_index + offset >= m_src.length()) {
@@ -144,7 +154,9 @@ public:
             
             str = "";
             cont = peek().has_value();
-            if (cont) //keep ignoring whitespaces
+            if (cont) /*ignore whitespaces, keep track of ln and ch coordinates, terminate loop when EOF
+                        encountered.
+                */
             {
                 while (cont)
                 {
@@ -173,7 +185,9 @@ public:
             }
             if (cont) {
 
-                while (cont)
+                while (cont)/* add non-space characters to string , keep track of ln and ch coordinates, terminate loop when EOF
+                        encountered.
+                */
                 {
                     ch = *peek();
                    
@@ -205,8 +219,15 @@ public:
                 }
 
             }
+            /*
+             compare token with each regular expression.
+             return the corresponding token if match successful.
+             return EOF token if EOF is found.
+             return {} if the token is not lexically valid. For this we use the optional library.
+            
+            */
            
-           if (!cont && str=="")
+           if (!cont && str==EMPTY)
            {
                
                 current_token=Token(TOKEN_TYPE::Eof,TOKEN_SUB_TYPE:: Undef);
@@ -245,7 +266,7 @@ public:
         }
 
         inline explicit Tokenizer(std::string src)
-            : m_src(std::move(src))
+            : m_src(std::move(src))// change the ownership of src
         {
 
             //unecessary initialisations to avoid warnings

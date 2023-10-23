@@ -2,11 +2,18 @@
 #include <string>
 #include <iostream>
 #include "lexer.h"
+/*Types of Errors encountered while compiling. */
 const std::string ERLEX = "Lexical Error";
 const std::string ERSYN = "Syntactical Error";
 const std::string ERSEM = " Semantic Error";
 extern int line_count;
 extern int  word_count;
+/* Unique error codes for each kind of error encountered.
+   Starts with 1 ---> it is a lexical error
+   Starts with 2 ---> it is a syntactical error
+   Starts with 3 ----> it is a semantical error
+
+*/
 constexpr int ERRNUM101 = 101;
 constexpr int ERRNUM102 = 102;
 constexpr int ERRNUM103 = 103;
@@ -18,6 +25,7 @@ constexpr int ERRNUM203 = 203;
 constexpr int ERRNUM204 = 204;
 constexpr int ERRNUM301 = 301;
 constexpr int ERRNUM302 = 302;
+/* Error messages for each error encountered .*/
 const std::string L_ERRMSG_AN = "Given expression is not a word. Did you mean it to be a Noun or Adword? ";
 const std::string L_ERRMSG_N = "Given expression is not a word. Did you mean it to be a Noun? ";
 const std::string L_ERRMSG_AV= "Given expression is not a word. Did you mean it to be a Verb or Adword? ";
@@ -30,6 +38,11 @@ const std::string S_ERRMSG_F = "End of file detected before sentence termination
 ;
 const std::string SE_ERRMSG_N = "A Noun cannot be used both as an Object and a Subject.";
 const std::string SE_ERRMSG_A = "An Adword cannot be used both as an Adjective and Adverb. ";
+
+/* Calculates the position where the error has occured. 
+*The column position in terms of characters.
+*/
+
 int word(int word_count)
 {
 	if (word_count > str.length())
@@ -41,6 +54,12 @@ int word(int word_count)
 		return 0;
 	}
 }
+/*
+   Error functor
+   stores error related information and displays when needed.
+
+
+*/
 struct Error {
 	int error_code;
 	const std::string error_message;
@@ -54,7 +73,9 @@ struct Error {
 		std::cerr << "ERROR CODE : " << error_code << " " << "ERROR TYPE : " << error_type<<" " << "ERROR MESSAGE : " << error_message<<" LN : "<<line_count<<" CH : "<<word(word_count) << "\n";
 	}
 };
-
+/*
+* All the various error functors are declared.
+*/
 static struct Error ERR_101(ERRNUM101, ERLEX, L_ERRMSG_AN);
 static struct Error ERR_102(ERRNUM102, ERLEX, L_ERRMSG_N);
 static struct Error ERR_103(ERRNUM103, ERLEX,L_ERRMSG_AV );

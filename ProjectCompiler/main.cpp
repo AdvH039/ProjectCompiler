@@ -7,7 +7,7 @@
 #include<string>
 #include "lexer.h"
 #include "parser.h"
-//#include "error.h"
+
 extern Tokenizer token_generator;
 extern int EOF_REACHED;
 extern std::string Token_type(enum TOKEN_TYPE tt);
@@ -26,22 +26,22 @@ int main(int argc, char* argv[])
         
         return EXIT_FAILURE;
     }*/
-
+    /* loading contents of file*/
     std::string contents;
     {
         std::stringstream contents_stream;
-        std::fstream input("sampleprogram.txt", std::ios::in);
+        std::fstream input("sampleprogram.txt" /* argv[1]*/, std::ios::in);
         contents_stream << input.rdbuf();
         contents = contents_stream.str();
         
 
 
     }
-
+    /* intitialising tokenizer object. */
     token_generator = Tokenizer(contents);
     token_generator.next_token();
     
-    
+    // continue parsing and lexing until EOF
     while (!EOF_REACHED)
     {
        
@@ -50,8 +50,11 @@ int main(int argc, char* argv[])
         
           
      }
+    // Listing all tokens and their properties in a neat table
+    
     if (!symbol_table.empty())
     {
+        std::cout << std::endl;
         std::cout << "List of all tokens, mentioning their types and subtypes in their respective first valid sentence." << std::endl;
         std::cout << "      Token Value         Token Type        Token Subtype      " << std::endl;
 
