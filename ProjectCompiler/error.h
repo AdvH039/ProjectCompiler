@@ -72,6 +72,11 @@ struct Error {
 	{
 		std::cerr << "ERROR CODE : " << error_code << " " << "ERROR TYPE : " << error_type<<" " << "ERROR MESSAGE : " << error_message<<" LN : "<<line_count<<" CH : "<<word(word_count) << "\n";
 	}
+	void operator()(int l_c, int w_c)
+	{
+		std::cerr << "ERROR CODE : " << error_code << " " << "ERROR TYPE : " << error_type << " " << "ERROR MESSAGE : " << error_message << " LN : " << l_c << " CH : " << word(w_c) << "\n";
+	}
+	
 };
 /*
 * All the various error functors are declared.

@@ -25,6 +25,8 @@ bool Adjective1_node(std::optional<Token> tkn)
 		if ((*tkn).type == TOKEN_TYPE::Adword)  // Subject Phrase---> Adjective1 (optional) Subject (mandatory)
 		{
 			adjective1_value = str;
+			int w_c = word_count;
+			int l_c = line_count;
 			token_generator.next_token();
 			if (Subject_node(current_token) && !ERR_OCC)// check if subject comes after adword (in a valid sentence this must happen.)
 			{
@@ -33,7 +35,7 @@ bool Adjective1_node(std::optional<Token> tkn)
 					// after sentence is confirmed to be syntactically and lexically valid check for semantic validity.
 					if (symbol_table[adjective1_value].sub_type != TOKEN_SUB_TYPE::Adjective)
 					{//if lexeme exists check for semantic error
-						ERR_302();// raise semantic error 302
+						ERR_302(l_c,w_c);// raise semantic error 302
 					}
 				}
 				else
@@ -94,7 +96,8 @@ bool Subject_node(std::optional<Token> tkn)
 	{
 		if ((*tkn).type == TOKEN_TYPE::Noun)
 		{
-			
+			int w_c = word_count;
+			int l_c = line_count;
 			token_generator.next_token();
 			bool adv_node = Adverb_node(current_token);
 			if (adv_node && !ERR_OCC)
@@ -103,7 +106,7 @@ bool Subject_node(std::optional<Token> tkn)
 				{
 					if (symbol_table[subject_value].sub_type != TOKEN_SUB_TYPE::Subject)
 					{//if lexeme exists check for semantic error
-						ERR_301();
+						ERR_301(l_c,w_c);
 					}
 				}
 				else
@@ -162,6 +165,8 @@ bool Adverb_node(std::optional<Token> tkn)
 	{
 		if ((*tkn).type == TOKEN_TYPE::Adword )
 		{
+			int w_c = word_count;
+			int l_c = line_count;
 			adverb_value = str;
 			token_generator.next_token();
 			bool v_node = Verb_node(current_token);
@@ -172,7 +177,7 @@ bool Adverb_node(std::optional<Token> tkn)
 				{
 					if (symbol_table[adverb_value].sub_type != TOKEN_SUB_TYPE::Adverb)
 					{//if lexeme exists check for semantic error
-						ERR_302();
+						ERR_302(l_c,w_c);
 					}
 				}
 				else
@@ -225,6 +230,7 @@ bool Verb_node(std::optional<Token> tkn)
 	{
 		if ((*tkn).type == TOKEN_TYPE::Verb)
 		{
+			
 			verb_value = str;
 			token_generator.next_token();
 			bool ad2_node = Adjective2_node(current_token);
@@ -283,6 +289,8 @@ bool Adjective2_node(std::optional<Token> tkn)
 	{
 		if ((*tkn).type == TOKEN_TYPE::Adword)// Object Phrase ---> Adjective2 (optional) Object (mandatory only when adjective 2 precedes it)
 		{
+			int w_c = word_count;
+			int l_c = line_count;
 			adjective2_value = str;
 			token_generator.next_token();
 			std::optional<Token> temp_token = current_token;
@@ -293,7 +301,7 @@ bool Adjective2_node(std::optional<Token> tkn)
 				{
 					if (symbol_table[adjective2_value].sub_type != TOKEN_SUB_TYPE::Adjective)
 					{
-						ERR_302();
+						ERR_302(l_c,w_c);
 					}
 				}
 				else
@@ -358,6 +366,8 @@ bool Object_node(std::optional<Token> tkn)
 	{
 		if ((*tkn).type == TOKEN_TYPE::Noun)
 		{
+			int w_c = word_count;
+			int l_c = line_count;
 			object_value = str;
 			token_generator.next_token();
 			bool punc_node = Punctuation_node(current_token);
@@ -367,7 +377,7 @@ bool Object_node(std::optional<Token> tkn)
 				{
 					if (symbol_table[object_value].sub_type != TOKEN_SUB_TYPE::Object)
 					{//if lexeme exists check for semantic error
-						ERR_301();
+						ERR_301(l_c, w_c);
 					}
 				}
 				else 

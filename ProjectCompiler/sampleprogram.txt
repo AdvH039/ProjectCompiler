@@ -1,3 +1,6 @@
-A a1 B .
-abcd A  nnnn n1  efgh  E .
-  n2 efgh E .
+B 
+m7
+.
+A m3 l B !
+A A
+A b v7 .
