@@ -61,7 +61,7 @@ We receive this output:
      ERROR CODE : 202 ERROR TYPE : Syntactical Error ERROR MESSAGE : Expected the usage of a Verb here. LN : 1 CH : 23                                                                                
 The reason for implementing such error handling in the compiler is because the detection system of the compiler perceives the input in the following manner:     
                                             
-    Sentence 1 :[Noun] [Verb] [Adword] {Adword at invalid position} (Missing Noun) (Missing Punctuation Mark)                                                                      
+    Sentence 1 :[Noun] [Verb] [Adword] {Adword at invalid position -ignored } (Missing Noun) (Missing Punctuation Mark)                                                                      
     Sentence 2 : (Missing Noun) (Missing Verb) [Punctuation Mark]                                             
 
 What I want it to perceive is :             
