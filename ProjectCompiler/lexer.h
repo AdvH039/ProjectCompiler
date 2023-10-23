@@ -18,7 +18,7 @@ const std::regex IS_PUNC("^[.?!]$");
  * useful for error logging
 */
 inline int line_count=1;
-inline int word_count=0;
+inline int word_count=1;
 
 
 enum TOKEN_TYPE
@@ -37,7 +37,10 @@ enum TOKEN_SUB_TYPE
     Object,
     Adverb,
     Adjective,
-    Undef,
+    Q_mark,
+    P_mark,
+    Period,
+    Undef
 
 
 
@@ -89,6 +92,18 @@ inline std::string Token_sub_type(enum TOKEN_SUB_TYPE tst)
     else if (tst == TOKEN_SUB_TYPE::Adverb)
     {
         return "Adverb";
+    }
+    else if (tst == TOKEN_SUB_TYPE::P_mark)
+    {
+        return "Punctuation Mark";
+    }
+    else if (tst == TOKEN_SUB_TYPE::Q_mark)
+    {
+        return "Question Mark";
+    }
+    else if (tst == TOKEN_SUB_TYPE::Period)
+    {
+        return "Period";
     }
     else
     {
@@ -246,8 +261,21 @@ public:
             }
             else if (std::regex_match(str, IS_PUNC))
             {
+               
 
                 current_token= Token(TOKEN_TYPE::Punc, TOKEN_SUB_TYPE::Undef);
+                if (str == "!")
+                {
+                    (*current_token).sub_type = TOKEN_SUB_TYPE::P_mark;
+                }
+                else if (str == "?")
+                {
+                    (*current_token).sub_type = TOKEN_SUB_TYPE::Q_mark;
+                }
+                else
+                {
+                    (*current_token).sub_type = TOKEN_SUB_TYPE::Period;
+                }
                 
 
             }

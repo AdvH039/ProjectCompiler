@@ -51,7 +51,7 @@ int word(int word_count)
 	}
 	else
 	{
-		return 0;
+		return 1;
 	}
 }
 /*

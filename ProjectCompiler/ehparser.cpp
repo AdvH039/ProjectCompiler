@@ -12,13 +12,16 @@ extern int EOF_Reached;
 
 extern std::unordered_map<std::string, Token> symbol_table;
 inline int  ERR_OCC = 0;
+inline int ERR_203_CALLED = 0;
 
 
 
 bool Adjective1_node(std::optional<Token> tkn)
 {
+	std::cout << str;
 	std::string adjective1_value;
 	ERR_OCC = 0;
+	ERR_203_CALLED = 0;
 	
 	if (tkn.has_value())
 	{
@@ -284,6 +287,7 @@ bool Adjective2_node(std::optional<Token> tkn)
 {
 	std::string adjective2_value;
 	
+	
 
 	if (tkn.has_value())
 	{
@@ -315,7 +319,7 @@ bool Adjective2_node(std::optional<Token> tkn)
 			{
 				return SUCCESS;
 			}
-			else
+			else if (!obj_node )
 			{
 				ERR_OCC = 1;
 				ERR_201();
@@ -323,6 +327,10 @@ bool Adjective2_node(std::optional<Token> tkn)
 				return FAILURE;
 
 
+			}
+			else
+			{
+				return FAILURE;
 			}
 
 
@@ -362,6 +370,7 @@ bool Object_node(std::optional<Token> tkn)
 {
 	
 	std::string object_value;
+	
 	if (tkn.has_value())
 	{
 		if ((*tkn).type == TOKEN_TYPE::Noun)
@@ -426,6 +435,7 @@ bool Punctuation_node(std::optional<Token> tkn)
 {
 	
 	// Punctuation phrase ---> Punctuation (mandatory)
+	std::cout << str;
 	if (tkn.has_value())
 	{
 		if ((*tkn).type == TOKEN_TYPE::Eof)
@@ -433,12 +443,24 @@ bool Punctuation_node(std::optional<Token> tkn)
 			EOF_REACHED = 2;
 			return FAILURE;
 		}
-		if ((*tkn).type != TOKEN_TYPE::Punc)
+		if ((*tkn).type != TOKEN_TYPE::Punc  )
 		{
-			ERR_203();
+			if (!ERR_203_CALLED)
+			{
+				ERR_203();
+				ERR_203_CALLED = 1;
+				
+			}
+			ERR_OCC = 1;
 			return FAILURE;
 		}
 		
+		
+		if (!symbol_table.count(str) && !ERR_OCC)
+		{
+			
+			symbol_table[str] = *tkn;
+		}
 		token_generator.next_token();
 		return SUCCESS;
 	}
