@@ -5,7 +5,7 @@
 This project is built for a language similar to that of English.
 
 The grammatical specifications are mentioned in the link below (Note: This implementation a part of language does not include prepositions or numbers.):
-https://docs.google.com/document/d/1uBBrA52rutLfrqMGSvT5C-W2yC91tFdh_a6E8lbkkss/edit#heading=h.yxfcs8ml1jc
+https://docs.google.com/document/d/1uBBrA52rutLfrqMGSvT5C-W2yC91tFdh_a6E8lbkkss/edit#heading=h.yxfcs8ml1jc8
 Additionally :-
 - All the lexer functions are in the header file lexer.h.
 - All the parser functions are declared in parser.h and defined in parser.cpp
