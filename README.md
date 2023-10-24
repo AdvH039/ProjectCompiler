@@ -10,7 +10,7 @@ Additionally :-
 - All the lexer functions are in the header file lexer.h.
 - All the parser functions are declared in parser.h and defined in parser.cpp
 - All the error log information are in the header file error.h
-- The parser obtains tokens one at a time from the lexer through an object of the Tokenizer class and carries out the productions of the grammar through controlled function calls.
+- The parser receives tokens, one at a time, from the lexer through an object of the Tokenizer class and carries out the productions of the grammar through controlled function calls.
 - The parser contains an in-built error detection and recovery system that monitors the parsing and uses 'Error' functors to display errors when intervention is necessary.
 - Lexical and syntactical errors are displayed if detected. Semantical Errors are detected and displayed only when an sentence is correct lexically and syntactically.
 
@@ -50,7 +50,7 @@ If you found an issue or would like to submit an improvement to this project, pl
 
 ## Known issues (Work in progress)
 
-The Error Recovery mainly for now finds missing or invalid tokens and reports them for violating lexical and syntactical rules of the language respectively. It also reports violation of the language's semantic rules. Like for Example  if we take this line of code:                                                                                                                                                 
+The Error Recovery currently finds missing or invalid tokens and reports them for violating lexical and syntactical rules of the language . It also reports violation of the language's semantic rules, for example  if we consider this line of code:                                                                                                                                                 
                                                                                        
            Adv run1 creepy ghost .
 We receive this output:
@@ -59,7 +59,7 @@ We receive this output:
      ERROR CODE : 203 ERROR TYPE : Syntactical ErrorERROR MESSAGE : Expected the usage of a Punctuation here. LN : 1 CH : 17    
      ERROR CODE : 201 ERROR TYPE : Syntactical Error ERROR MESSAGE : Expected the usage of a Noun here. LN : 1 CH : 23  
      ERROR CODE : 202 ERROR TYPE : Syntactical Error ERROR MESSAGE : Expected the usage of a Verb here. LN : 1 CH : 23                                                                                
-The reason for implementing such error handling in the compiler is because the detection system of the compiler perceives the input in the following manner:     
+The reason for implementing such error recovery in the compiler is because the error detection system of the compiler perceives the input in the following manner:     
                                             
     Sentence 1 :[Noun] [Verb] [Adword] {Adword at invalid position -ignored } (Missing Noun) (Missing Punctuation Mark)                                                                      
     Sentence 2 : (Missing Noun) (Missing Verb) [Punctuation Mark]                                             
@@ -67,7 +67,7 @@ The reason for implementing such error handling in the compiler is because the d
 What I want it to perceive is :             
                                             
      Sentence 1: [Noun] [Verb] [Adword] [Misspelt Noun.. should be Ghost not ghost] [Punctuation Mark]
-Thus, the compiler should incorporate robust error handling techniques, going beyond mere error detection. It should intelligently assess whether an Adword has been mistakenly used as a Noun, evaluating if the sentence would still remain grammatically correct. This is crucial, as a common mistake is neglecting to capitalize the first letter of a word to make it a valid Noun
+Thus, the compiler should incorporate robust error handling techniques, going beyond mere error detection. It should intelligently assess whether an Adword has been mistakenly used as a Noun, while evaluating if the sentence still remains grammatically correct. This is crucial as a common mistake is neglecting to capitalize the first letter of a word to make it a valid Noun.
 
 
 ## Like this project?
