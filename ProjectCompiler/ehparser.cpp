@@ -18,11 +18,11 @@ inline int ERR_203_CALLED = 0;
 
 bool Adjective1_node(std::optional<Token> tkn)
 {
-	
+
 	std::string adjective1_value;
 	ERR_OCC = 0;
 	ERR_203_CALLED = 0;
-	
+
 	if (tkn.has_value())
 	{
 		if ((*tkn).type == TOKEN_TYPE::Adword)  // Subject Phrase---> Adjective1 (optional) Subject (mandatory)
@@ -38,7 +38,7 @@ bool Adjective1_node(std::optional<Token> tkn)
 					// after sentence is confirmed to be syntactically and lexically valid check for semantic validity.
 					if (symbol_table[adjective1_value].sub_type != TOKEN_SUB_TYPE::Adjective)
 					{//if lexeme exists check for semantic error
-						ERR_302(l_c,w_c);// raise semantic error 302
+						ERR_302(l_c, w_c);// raise semantic error 302
 					}
 				}
 				else
@@ -68,8 +68,8 @@ bool Adjective1_node(std::optional<Token> tkn)
 		}
 		else //Subject phrase---> Subject when there is no Adjective1
 		{
-			
-			bool r_value= Subject_node(tkn);
+
+			bool r_value = Subject_node(tkn);
 			if (EOF_REACHED == 2)// check if EOF occurs befor..
 			{
 				ERR_204();
@@ -89,12 +89,12 @@ bool Adjective1_node(std::optional<Token> tkn)
 		}
 		return FAILURE;
 	}
-	
+
 
 }
 bool Subject_node(std::optional<Token> tkn)
 {
-	std::string subject_value=str;
+	std::string subject_value = str;
 	if (tkn.has_value())
 	{
 		if ((*tkn).type == TOKEN_TYPE::Noun)
@@ -109,7 +109,7 @@ bool Subject_node(std::optional<Token> tkn)
 				{
 					if (symbol_table[subject_value].sub_type != TOKEN_SUB_TYPE::Subject)
 					{//if lexeme exists check for semantic error
-						ERR_301(l_c,w_c);
+						ERR_301(l_c, w_c);
 					}
 				}
 				else
@@ -125,7 +125,7 @@ bool Subject_node(std::optional<Token> tkn)
 			}
 			else
 			{
-				
+
 				return FAILURE;
 
 			}
@@ -139,13 +139,13 @@ bool Subject_node(std::optional<Token> tkn)
 		}
 		else
 		{
-			/*if subject is missing, call a  syntactical error and continue till a  potential end of the 
+			/*if subject is missing, call a  syntactical error and continue till a  potential end of the
 			sentence is found--->error handling commences here.
-			
+
 */			ERR_OCC = 1;
-			ERR_201();
-			Adverb_node(tkn);
-			return FAILURE;
+ERR_201();
+Adverb_node(tkn);
+return FAILURE;
 		}
 
 
@@ -166,7 +166,7 @@ bool Adverb_node(std::optional<Token> tkn)
 	std::string adverb_value;
 	if (tkn.has_value())
 	{
-		if ((*tkn).type == TOKEN_TYPE::Adword )
+		if ((*tkn).type == TOKEN_TYPE::Adword)
 		{
 			int w_c = word_count;
 			int l_c = line_count;
@@ -180,7 +180,7 @@ bool Adverb_node(std::optional<Token> tkn)
 				{
 					if (symbol_table[adverb_value].sub_type != TOKEN_SUB_TYPE::Adverb)
 					{//if lexeme exists check for semantic error
-						ERR_302(l_c,w_c);
+						ERR_302(l_c, w_c);
 					}
 				}
 				else
@@ -233,7 +233,7 @@ bool Verb_node(std::optional<Token> tkn)
 	{
 		if ((*tkn).type == TOKEN_TYPE::Verb)
 		{
-			
+
 			verb_value = str;
 			token_generator.next_token();
 			bool ad2_node = Adjective2_node(current_token);
@@ -286,8 +286,8 @@ bool Verb_node(std::optional<Token> tkn)
 bool Adjective2_node(std::optional<Token> tkn)
 {
 	std::string adjective2_value;
-	
-	
+
+
 
 	if (tkn.has_value())
 	{
@@ -305,7 +305,7 @@ bool Adjective2_node(std::optional<Token> tkn)
 				{
 					if (symbol_table[adjective2_value].sub_type != TOKEN_SUB_TYPE::Adjective)
 					{
-						ERR_302(l_c,w_c);
+						ERR_302(l_c, w_c);
 					}
 				}
 				else
@@ -319,7 +319,7 @@ bool Adjective2_node(std::optional<Token> tkn)
 			{
 				return SUCCESS;
 			}
-			else if (!obj_node )
+			else if (!obj_node)
 			{
 				ERR_OCC = 1;
 				ERR_201();
@@ -368,9 +368,9 @@ bool Adjective2_node(std::optional<Token> tkn)
 
 bool Object_node(std::optional<Token> tkn)
 {
-	
+
 	std::string object_value;
-	
+
 	if (tkn.has_value())
 	{
 		if ((*tkn).type == TOKEN_TYPE::Noun)
@@ -389,7 +389,7 @@ bool Object_node(std::optional<Token> tkn)
 						ERR_301(l_c, w_c);
 					}
 				}
-				else 
+				else
 				{
 					(*tkn).sub_type = TOKEN_SUB_TYPE::Object;
 					symbol_table[object_value] = *tkn;
@@ -433,9 +433,9 @@ bool Object_node(std::optional<Token> tkn)
 }
 bool Punctuation_node(std::optional<Token> tkn)
 {
-	
+
 	// Punctuation phrase ---> Punctuation (mandatory)
-	
+
 	if (tkn.has_value())
 	{
 		if ((*tkn).type == TOKEN_TYPE::Eof)
@@ -443,22 +443,22 @@ bool Punctuation_node(std::optional<Token> tkn)
 			EOF_REACHED = 2;
 			return FAILURE;
 		}
-		if ((*tkn).type != TOKEN_TYPE::Punc  )
+		if ((*tkn).type != TOKEN_TYPE::Punc)
 		{
 			if (!ERR_203_CALLED)
 			{
 				ERR_203();
 				ERR_203_CALLED = 1;
-				
+
 			}
 			ERR_OCC = 1;
 			return FAILURE;
 		}
-		
-		
+
+
 		if (!symbol_table.count(str) && !ERR_OCC)
 		{
-			
+
 			symbol_table[str] = *tkn;
 		}
 		token_generator.next_token();
@@ -472,14 +472,3 @@ bool Punctuation_node(std::optional<Token> tkn)
 		return FAILURE;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -1,1 +1,1 @@
-Adv run1 creepy ghost .
+ run1 creepy ghost .
