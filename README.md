@@ -30,14 +30,7 @@ Additionally :-
 <a href="url">https://www.youtube.com/watch?v=9p_s457RSQE&list=PLTsf9UeqkRebOYdw4uqSN0ugRShSmHrzH
 </a>
 
-## How to use this project
-
-
-
-1. Clone this project.
-2. Write all the code in the sampleprogram.txt file and run the program.
-3. A suitable version of C++ is required. Anything after C++17.
-4. View the error logs and the symbol table containing words used in valid sentences.                      
+                    
 ## Challenges Faced
 - Building a parser from scratch and handling the various grammar productions was a tedious task but overall just needed some time and a systematic approach.
 - Travelling the implicit Abstract Syntax Tree (AST) for semantic correctness and ensuring no infinite recursion during error handling required some deep thought on the design of the parser's functions and it's implementation.
